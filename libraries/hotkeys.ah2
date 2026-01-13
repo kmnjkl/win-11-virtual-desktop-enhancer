@@ -3,6 +3,7 @@
 
 class HotkeyManager {
     static keyboardShortcuts := Map()
+	static desktopsNumber := 10
 
     static Initialize() {
         this.Load()
@@ -23,6 +24,7 @@ class HotkeyManager {
                 }
             }
         }
+		this.desktopsNumber := this.keyboardShortcuts["DesktopsNumber"]
     }
 
     static ConvertModifiers(modifiers) {
@@ -55,7 +57,7 @@ class HotkeyManager {
                 Hotkey(switchModifier . this.keyboardShortcuts["NextDesktop"], (*) => SwitchToDesktop(
                     GetCurrentDesktopNumber() + 1))
 
-                loop 10 {
+                loop this.desktopsNumber {
                     i := A_Index
                     Hotkey(switchModifier . this.keyboardShortcuts["Desktop" . i], ((desktopNum) => (*) =>
                         SwitchToDesktop(
@@ -71,7 +73,7 @@ class HotkeyManager {
                     GetCurrentDesktopNumber() - 1))
                 Hotkey(moveModifier . this.keyboardShortcuts["NextDesktop"], (*) => MoveWindowToDesktop(
                     GetCurrentDesktopNumber() + 1))
-                loop 10 {
+                loop this.desktopsNumber {
                     i := A_Index
                     Hotkey(moveModifier . this.keyboardShortcuts["Desktop" . i], ((desktopNum) => (*) =>
                         MoveWindowToDesktop(
@@ -86,7 +88,7 @@ class HotkeyManager {
                 Hotkey(moveAndSwitchModifier . this.keyboardShortcuts["NextDesktop"], (*) =>
                     MoveWindowAndSwitchToDesktop(
                         GetCurrentDesktopNumber() + 1))
-                loop 10 {
+                loop this.desktopsNumber {
                     i := A_Index
                     Hotkey(moveAndSwitchModifier . this.keyboardShortcuts["Desktop" . i], ((desktopNum) => (*) =>
                         MoveWindowAndSwitchToDesktop(desktopNum))(i))

@@ -25,6 +25,7 @@ class HotkeyManager {
             }
         }
 		this.desktopsNumber := this.keyboardShortcuts["DesktopsNumber"]
+		this.enableDesktopAltKeys := this.keyboardShortcuts["EnableDesktopAltKeys"]
     }
 
     static ConvertModifiers(modifiers) {
@@ -62,9 +63,11 @@ class HotkeyManager {
                     Hotkey(switchModifier . this.keyboardShortcuts["Desktop" . i], ((desktopNum) => (*) =>
                         SwitchToDesktop(
                             desktopNum))(i))
-                    Hotkey(switchModifier . this.keyboardShortcuts["DesktopAlt" . i], ((desktopNum) => (*) =>
-                        SwitchToDesktop(
-                            desktopNum))(i))
+					if (this.enableDesktopAltKeys) {
+						Hotkey(switchModifier . this.keyboardShortcuts["DesktopAlt" . i], ((desktopNum) => (*) =>
+							SwitchToDesktop(
+								desktopNum))(i))
+					}
                 }
             }
 

@@ -1,5 +1,5 @@
 # My modifications
-Added configurable number of Desktops.
+Added configurable number of Desktops and a setting to disable DesktopAlt shortcuts.
 
 # Windows 11 Virtual Desktop Enhancer (AutoHotkey v2)
 

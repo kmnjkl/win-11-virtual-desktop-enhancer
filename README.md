@@ -1,3 +1,6 @@
+# My modifications
+Added configurable number of Desktops.
+
 # Windows 11 Virtual Desktop Enhancer (AutoHotkey v2)
 
 This is a new implementation of  for Windows 11 using AutoHotkey v2.
